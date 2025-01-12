@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/user.model';
+import User from '../models/user.model.js';
 
-export const protectRoute = async(requestAnimationFrame,resizeBy,next) => {
+export const protectRoute = async(req,res,next) => {
     try{
-        const token = requestAnimationFrame.cookies.jwt;
+        const token = req.cookies.jwt;
         if(!token){
             return resizeBy.status(401).json({
                 message : "Unauthorized - No Token provided"
